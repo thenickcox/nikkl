@@ -14,6 +14,16 @@ gem 'jquery-rails'
 gem 'jbuilder', '~> 2.0'
 gem 'sdoc', '~> 0.4.0', group: :doc
 
+gem 'backbone-on-rails'
+gem 'ruby-haml-js'
+gem 'zeroclipboard-rails'
+
+group :test, :development do
+  gem 'konacha'
+  gem 'chai-jquery-rails'
+  gem 'sinon-rails'
+  gem 'sinon-chai-rails'
+end
 
 gem 'rspec-rails', '~>3.0'
 gem 'quiet_assets'

@@ -1,0 +1,5 @@
+.link
+  %span
+    Your link is
+    %a.shortened-link{ href: link, id: 'copy-link' }>= link
+  %button#copy-button(data-clipboard-target='copy-link') Copy
