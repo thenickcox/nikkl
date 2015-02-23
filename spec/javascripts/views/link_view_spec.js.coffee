@@ -16,9 +16,9 @@ describe 'LinkView', ->
 
   describe 'creating a link', ->
     beforeEach ->
-      $('.link-input').val('http://nickcox.me')
+      @serverLink = 'http://nickcox.me'
+      $('.link-input').val(@serverLink)
       $('button').click()
-      @serverLink = 'http://localhost:3000/foobar'
       @fakeServer.respondWith([200, { "Content-Type": "application/json" }, "{ \"link\": \"#{@serverLink}\"}"])
       @fakeServer.respond()
 
@@ -27,3 +27,13 @@ describe 'LinkView', ->
       expect(@el).to.have('.shortened-link')
       expect($('.link span').text().trim()).to.eq("Your link is #{@serverLink}")
 
+  describe 'creating a link: invalid', ->
+    beforeEach ->
+      $('.link-input').val('puppies')
+      $('button').click()
+      @errorMsg = "Huh. That doesn't seem to be a valid URL. Try again?"
+      @fakeServer.respondWith([422, { "Content-Type": "application/json" }, "{ \"url\": \"#{@errorMsg}\"}"])
+      @fakeServer.respond()
+
+    it 'populates the errors div', ->
+      expect($('.errors')).to.have.text(@errorMsg)

@@ -40,19 +40,30 @@ describe LinksController, type: :controller do
   end
 
   describe 'POST create' do
-    let(:url) { 'puppies' }
-    subject   { post :create, link: { url: url } }
+    let(:url) { 'http://google.com' }
+    subject   { post :create, link: { url: url }, format: :json }
 
-    it 'successfully creates' do
-      subject
-      expect(Link.last.url).to eq url
+    context 'legit url' do
+      it 'successfully creates' do
+        subject
+        expect(response.status).to eq 200
+      end
+    end
+
+    context 'not a url' do
+      let(:url) { 'puppies' }
+      it 'does not succeed' do
+        subject
+        expect(response.status).to eq 422
+      end
     end
   end
 
   describe 'PUT update' do
-    let(:new_url) { 'kittens' }
+    let(:new_url) { 'http://kittens.com' }
     let(:params)  {{ link: { url: new_url }, id: Link.last.id }}
     subject { patch :update, params }
+    before  { Link.create(url: 'http://google.com') }
 
     it 'updates successfully' do
       subject
@@ -64,6 +75,7 @@ describe LinksController, type: :controller do
     let(:id) { Link.last.id }
     subject { delete :destroy, id: id }
 
+    before  { Link.create(url: 'http://google.com') }
     it 'deletes the record' do
       subject
       expect(Link.find_by_id(id)).to be_nil

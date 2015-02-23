@@ -1,2 +1,3 @@
+.errors
 %input.link-input{ placeholder: 'http://example.com' }
 %button.go Go

@@ -19,8 +19,13 @@ App.Views.LinkView = Backbone.View.extend
     ,
       success: (model, response, opts) =>
         @servResponse = response
+      error: (model, response, opts) =>
+        @showErrors(response)
   showSlug: ->
     console.log @servResponse
     @$el.html @replaceTemplate(@servResponse)
     clip = new ZeroClipboard $('#copy-button')
 
+  showErrors: (response) ->
+    msg = JSON.parse(response.responseText).url
+    $('.errors').html(msg)

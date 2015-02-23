@@ -19,6 +19,7 @@ gem 'ruby-haml-js'
 gem 'zeroclipboard-rails'
 
 gem 'validate_url'
+gem 'pry-rails'
 
 group :test, :development do
   gem 'konacha'
@@ -27,6 +28,7 @@ group :test, :development do
   gem 'sinon-chai-rails'
   gem 'rspec-rails', '~>3.0'
   gem 'shoulda-matchers', '~>2.8', require: false
+  gem 'database_cleaner', git: 'git@github.com:DatabaseCleaner/database_cleaner.git'
 end
 
 gem 'quiet_assets'
