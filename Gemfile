@@ -18,14 +18,17 @@ gem 'backbone-on-rails'
 gem 'ruby-haml-js'
 gem 'zeroclipboard-rails'
 
+gem 'validate_url'
+
 group :test, :development do
   gem 'konacha'
   gem 'chai-jquery-rails'
   gem 'sinon-rails'
   gem 'sinon-chai-rails'
+  gem 'rspec-rails', '~>3.0'
+  gem 'shoulda-matchers', '~>2.8', require: false
 end
 
-gem 'rspec-rails', '~>3.0'
 gem 'quiet_assets'
 gem 'byebug'
 gem 'web-console', '~> 2.0'
