@@ -4,3 +4,16 @@
 require File.expand_path('../config/application', __FILE__)
 
 Rails.application.load_tasks
+
+desc 'Run all tests'
+
+namespace :test do
+  task :all do
+    ['rspec',
+     'rake konacha:run'].each do |cmd|
+      system("bundle exec #{cmd}")
+
+      raise "#{cmd} failed!" unless $?.exitstatus == 0
+    end
+  end
+end

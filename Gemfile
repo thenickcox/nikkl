@@ -29,6 +29,9 @@ group :test, :development do
   gem 'rspec-rails', '~>3.0'
   gem 'shoulda-matchers', '~>2.8', require: false
   gem 'database_cleaner', git: 'git@github.com:DatabaseCleaner/database_cleaner.git'
+  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'poltergeist'
 end
 
 gem 'quiet_assets'
