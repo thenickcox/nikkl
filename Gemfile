@@ -20,6 +20,7 @@ gem 'zeroclipboard-rails'
 
 gem 'validate_url'
 gem 'pry-rails'
+gem 'squeel'
 
 group :test, :development do
   gem 'konacha'
