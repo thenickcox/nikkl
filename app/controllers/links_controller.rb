@@ -11,7 +11,7 @@ class LinksController < ApplicationController
   end
 
   def new
-    @link = Link.new
+    @presenter = LinkPagePresenter.new
   end
 
   def edit

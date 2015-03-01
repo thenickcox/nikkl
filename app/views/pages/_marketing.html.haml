@@ -1,6 +1,11 @@
 %h1
   = succeed '.' do
     This month's featured charity is
-    = Charity.featured.name
+    = @presenter.featured_charity_name
 
 %h2
+  We have raised
+  = @presenter.money_raised_in_featured_period
+  for
+  = @presenter.featured_charity_name
+  this month.
