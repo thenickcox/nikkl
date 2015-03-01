@@ -26,7 +26,7 @@ describe LinksController, type: :controller do
 
     it 'assigns an instance variable' do
       subject
-      expect(assigns(:link)).to be_a_new Link
+      expect(assigns(:presenter)).to be_a LinkPagePresenter
     end
 
     it 'responds with success' do

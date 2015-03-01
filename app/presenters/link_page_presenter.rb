@@ -3,7 +3,8 @@ class LinkPagePresenter
   CENTS_PER_LINK = 5
 
   def featured_charity_name
-    Charity.featured.name
+    featured = Charity.featured || NilCharity
+    featured.name
   end
 
   def money_raised_in_featured_period
@@ -11,3 +12,5 @@ class LinkPagePresenter
   end
 
 end
+
+class NilCharity < OpenStruct; end

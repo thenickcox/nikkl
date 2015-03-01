@@ -2,16 +2,9 @@ require 'spec_helper'
 require 'load_rails'
 
 describe 'creating a link', type: :feature do
-  let(:charity_attrs) {{
-    name: 'Oxfam',
-    url: 'http://oxfam.org',
-    start_on: Date.today.beginning_of_month.beginning_of_day,
-    end_on: Date.today.end_of_month.end_of_day
-  }}
-
   before do
     allow(Link).to receive(:count_in_featured_period).and_return(500)
-    Charity.create!(charity_attrs)
+    FactoryGirl.create :charity
     visit '/'
   end
 

@@ -3,6 +3,12 @@ require 'load_rails'
 
 describe Charity do
 
+  describe 'factory' do
+    it 'has a valid factory' do
+      expect(FactoryGirl.build(:charity)).to be_valid
+    end
+  end
+
   describe 'validations' do
     %i(name url start_on end_on).each do |field|
       it { should validate_presence_of field }
