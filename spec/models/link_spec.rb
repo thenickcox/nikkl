@@ -19,23 +19,24 @@ describe Link do
     end
   end
 
-  describe '#count_in_featured_period' do
-    subject { described_class.count_in_featured_period }
+  describe '#in_featured_period' do
+    subject { described_class.in_featured_period }
+    let(:link) { Link.create(url: 'http://google.com') }
     before do
-      Link.delete_all
-      Link.create(url: 'http://google.com')
-      Link.last.update_attribute(:created_at, created_at)
+      link
+      link.update_attribute(:created_at, created_at)
     end
+
     context 'created_at within period' do
       let(:created_at) { Date.today.beginning_of_month.beginning_of_day + 1.second }
       it 'counts link' do
-        expect(subject).to eq 1
+        expect(subject).to include link
       end
     end
     context 'created_at outside of period' do
       let(:created_at) { Date.today.end_of_month.end_of_day + 1.second }
       it 'does not count link' do
-        expect(subject).to eq 0
+        expect(subject).not_to include link
       end
     end
   end
