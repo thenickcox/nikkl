@@ -1,4 +1,3 @@
-require 'load_rails'
 require 'spec_helper'
 
 describe Link do
@@ -23,6 +22,7 @@ describe Link do
   describe '#count_in_featured_period' do
     subject { described_class.count_in_featured_period }
     before do
+      Link.delete_all
       Link.create(url: 'http://google.com')
       Link.last.update_attribute(:created_at, created_at)
     end

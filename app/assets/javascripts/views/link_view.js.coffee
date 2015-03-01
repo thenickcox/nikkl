@@ -22,7 +22,6 @@ App.Views.LinkView = Backbone.View.extend
       error: (model, response, opts) =>
         @showErrors(response)
   showSlug: ->
-    console.log @servResponse
     @$el.html @replaceTemplate(@servResponse)
     clip = new ZeroClipboard $('#copy-button')
 

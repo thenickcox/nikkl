@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'load_rails'
 
 describe Charity do
 

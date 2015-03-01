@@ -1,5 +1,4 @@
 require 'spec_helper'
-require 'load_rails'
 
 describe 'creating a link', type: :feature, js: true do
   before do
